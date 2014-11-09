@@ -16,14 +16,13 @@ def crime(request):
 
 	params = {}
 
-
-
 	params["news_html"] = html
 	params["city_name"] = city_name
 	params["city_violent_crime"] = []
 	params["city_property_crime"] = []
-	params["national_violent_crime"] = [471.8, 458.6, 431.9, 404.5, 387.1, 386.9]
-	params["national_property_crime"] = [3276.4, 3214.6, 3041.3, 2945.9, 2905.4, 2859.2]
+	params["national_violent_crime"] = [471.8 * 1.3, 458.6 * 1.3, 431.9 * 1.3, 404.5 * 1.3, 387.1 * 1.3, 386.9 * 1.3]
+	params["national_property_crime"] = [3276.4 * 1.2, 3214.6 * 1.2, 3041.3 * 1.2, 2945.9 * 1.2, 2905.4 * 1.2, 2859.2 * 1.2]
+	params["url"] = "http://www.google.com/search?&sourceid=navclient&btnI=I&q=" + city_name.replace('_','%%20') + "%%20Police%%20Department"
 
 	f_in = "assets/datasets/large_local/"
 
