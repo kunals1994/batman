@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stay safe</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/grayscale2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="assets/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:300' rel='stylesheet' type='text/css'>
+
+<script src="assets/js/custom.js"></script>
+<script src="assets/js/Chart.min.js"></script>
+</head>
+
+<header class="intro intro-body">
+    <div id="title-heading" class="intro">
+        <br>
+        <h1 class="brand-heading" style="text-align:center"> %(city_name)s Crime Data </h1>
+    </div>
+
+    <div class="grid-container">
+
+    <br><br>
+    <div class="">
+        <canvas id="buyers" width="500" height="300"></canvas>
+        <canvas id="buyers2" width="500" height="300"></canvas>
+    </div>
+
+
+    <br><br>
+    <div id="title-heading" class="intro">
+        <br>
+        <h3 class="brand-heading" style="text-align:center"> %(city_name)s's news data gives it a positivity score of %(score)s, on a scale from 0 to 10. </h3>
+    </div>
+    <div class="intro-text" width="50%%" id="slogan-text">
+        %(news_html)s
+    </div>
+
+    </div>
+
+</header>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="assets/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="assets/js/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="assets/js/grayscale.js"></script>
+
+    <script>
+
+var buyerData = {
+    labels : ["2007", "2008", "2009", "2010", "2011", "2012"],
+    datasets : [
+        {
+            label : "%(city_name)s Violent Crime Rate",
+            fillColor : "rgba(0,0,255,0)",
+            strokeColor : "#ACC26D",
+            pointColor : "#fff",
+            pointStrokeColor : "#9DB86D",
+            data : %(city_violent_crime)s
+        },
+        {
+            label : "National Property Crime Rate",
+            fillColor : "rgba(0,0,0,0)",
+            strokeColor : "#0000FF",
+            pointColor : "#fff",
+            pointStrokeColor : "#9DB86D",
+            data : %(national_violent_crime)s
+        }
+    ]
+}
+
+var buyerData2 = {
+    labels : ["2007", "2008", "2009", "2010", "2011", "2012"],
+    datasets : [
+        {
+            label : "%(city_name)s Property Crime Rate",
+            fillColor : "rgba(0,0,255,0)",
+            strokeColor : "#ACC26D",
+            pointColor : "#fff",
+            pointStrokeColor : "#9DB86D",
+            data : %(city_property_crime)s
+        },
+        {
+            label: "National Property Crime Rate",
+            fillColor : "rgba(0,0,0,0)",
+            strokeColor : "#0000FF",
+            pointColor : "#fff",
+            pointStrokeColor : "#9DB86D",
+            data : %(national_property_crime)s
+        }
+    ]
+}
+    var buyers = document.getElementById('buyers').getContext('2d');
+    var buyers2 = document.getElementById('buyers2').getContext('2d');
+
+    new Chart(buyers).Line(buyerData);
+    new Chart(buyers2).Line(buyerData2);
+
+
+    $("#title-heading").fadeIn(1000);$("#slogan-text").fadeIn(1500);$("#control-buttons").fadeIn(2000);
+</script>
+
+</div>
+</body>
+
+</html>

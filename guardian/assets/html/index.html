@@ -13,6 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://kshar.me/assets/css/unsemantic-grid-responsive.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="assets/css/grayscale.css" rel="stylesheet">
@@ -41,12 +42,12 @@
                         </div>
 
                         <div id="slogan-text" style="display:none;">
-                            <p class="intro-text">Stay safe</p>
+                            <p class="intro-text">Stay safe, look up a city</p>
                         </div>
 
                         <div id="control-buttons" style="display:none;">
                             <input id="cityname" type="text" class="btn btn-default btn-lg"/>
-                            <button class="btn btn-default btn-lg">Search</button>
+                            <button class="btn btn-default btn-lg" onclick="window.location='crime?city=' + $('#cityname').val(); ">Search</button>
                         </div>
 
                     </div>
@@ -69,6 +70,11 @@
 
     <script>
         $("#title-heading").fadeIn(1000);$("#slogan-text").fadeIn(1500);$("#control-buttons").fadeIn(2000);
+        $("#cityname").keypress(function(e) {
+            if(e.which==13){
+                window.location = 'crime?city=' + $("#cityname").val();
+            }
+        });
     </script>
 
 

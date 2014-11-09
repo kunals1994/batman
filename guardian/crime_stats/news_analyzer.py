@@ -2,7 +2,7 @@ import requests
 from alchemyapi import AlchemyAPI
 import json
 
-def getNews(query)
+def getNews(query):
     query = str(query)
     f = open('test.html', 'w')
     
@@ -26,13 +26,19 @@ def getNews(query)
     total = 0.0;
     
     for i in range(0, length-1):
-        linfo.append(alchemyapi.sentiment('text', rr[i]['Title'])['docSentiment'])
-        if linfo[i]['type'] != 'neutral':
-            total += float(linfo[i]['score'])
+        try:
+            linfo.append(alchemyapi.sentiment('text', rr[i]['Title'])['docSentiment'])
+            if linfo[i]['type'] != 'neutral':
+                total += float(linfo[i]['score'])
+        except:
+            continue
     avg = total/length
     html = '<html> <body>'
     for i in range(0, length-1):
-        html += '<a href="' + lurl[i] + '">' + ltitle[i] +'</a><br>' + ldesc[i] + '<br><br>'
+        try:
+            html += '<div class="grid-50 mobile-grid-95" width="50%%"> <a href="' + str(lurl[i]) + '">' + str(ltitle[i]) +'</a><br>' + str(ldesc[i]) + '<br></div><br>'
+        except:
+            continue
     html+= "</body></html>"
     
     return avg, html

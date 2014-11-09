@@ -11,5 +11,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', 'crime_stats.views.home', name='home'),
-    url(r'^assets', 'crime_stats.views.assets', name='assets')
+    url(r'^crime', 'crime_stats.views.crime', name='crime'),
+    url(r'^assets', 'crime_stats.views.assets', name='assets'),
 )
